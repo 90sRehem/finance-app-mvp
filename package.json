@@ -4,14 +4,22 @@
     "build": "turbo run build",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "test": "vitest",
+    "test:watch": "vitest watch",
+    "coverage": "vitest run --coverage"
   },
   "devDependencies": {
+    "@rehem-packages/eslint-config": "^1.1.0",
     "@turbo/gen": "^1.9.7",
+    "@types/node": "^20.4.5",
+    "@vitest/coverage-v8": "^0.33.0",
     "eslint": "^7.32.0",
-    "eslint-config-custom": "workspace:*",
     "prettier": "^2.5.1",
-    "turbo": "latest"
+    "turbo": "latest",
+    "typescript": "^5.0.2",
+    "vite-tsconfig-paths": "^4.2.0",
+    "vitest": "^0.33.0"
   },
   "packageManager": "pnpm@8.6.10",
   "name": "finance-app-mvp"
