@@ -1,11 +1,12 @@
 import { Guid } from "../value-objects/Guid";
+import { Notifiable } from "./Notifiable";
 
 /**
  * Represents a base entity.
  *
  * @template Props - The type of properties associated with the entity.
  */
-export abstract class BaseEntity<Props> {
+export abstract class BaseEntity<Props> extends Notifiable {
   private _id: Guid;
   protected _props: Props;
   private _createdAt: Date;
@@ -18,6 +19,7 @@ export abstract class BaseEntity<Props> {
    * @param {Guid} id - The id of the entity (optional).
    */
   public constructor(props: Props, id?: Guid) {
+    super();
     this._id = id ?? Guid.create();
     this._props = props;
     this._createdAt = new Date();
