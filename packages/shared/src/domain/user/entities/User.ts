@@ -30,12 +30,6 @@ export class User extends BaseEntity<UserProps> {
     this.touch();
   }
 
-  // public updateName(name: Partial<{ firstName: string; lastName: string }>) {
-  //   const updatedName = this._props.name.update(name);
-  //   this._props.name = updatedName;
-  //   this.touch();
-  // }
-
   get email(): Email {
     return this._props.email;
   }
