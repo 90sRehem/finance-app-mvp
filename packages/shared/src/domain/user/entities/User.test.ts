@@ -68,4 +68,14 @@ describe("User tests", () => {
     });
     expect(user.password.value).toBe(password.value);
   });
+
+  it("should be able to update the password property", () => {
+    const user = UserFactory.create();
+    const updatedPassword = new Password({
+      value: "123456",
+    });
+    user.password = updatedPassword;
+
+    expect(user.password.value).toBe(updatedPassword.value);
+  });
 });
