@@ -88,4 +88,15 @@ describe("User tests", () => {
 
     expect(user.password.value).toBe(updatedPassword.value);
   });
+
+  it("should get the accountType property", () => {
+    const user = UserFactory.create();
+    expect(user.accountType).toBe("main");
+  });
+
+  it("should be able to update the accountType property", () => {
+    const user = UserFactory.create();
+    const updatedAccountType = "sub";
+    user.accountType = updatedAccountType;
+  });
 });
