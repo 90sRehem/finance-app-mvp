@@ -19,6 +19,9 @@ export class UserFactory {
         password: new Password({
           value: faker.internet.password(),
         }),
+        accountType: "main",
+        mainAccountId: null,
+        subAccounts: [],
         ...propsToOverride,
       },
       id,

@@ -59,6 +59,16 @@ describe("User tests", () => {
     expect(user.email.address).toBe(email.address);
   });
 
+  it("should be able to update the email property", () => {
+    const user = UserFactory.create();
+    const updatedEmail = new Email({
+      address: "john.doe@example.com",
+    });
+    user.email = updatedEmail;
+
+    expect(user.email.address).toBe(updatedEmail.address);
+  });
+
   it("should get the password property", () => {
     const password = new Password({
       value: "123456",
@@ -67,5 +77,26 @@ describe("User tests", () => {
       password,
     });
     expect(user.password.value).toBe(password.value);
+  });
+
+  it("should be able to update the password property", () => {
+    const user = UserFactory.create();
+    const updatedPassword = new Password({
+      value: "123456",
+    });
+    user.password = updatedPassword;
+
+    expect(user.password.value).toBe(updatedPassword.value);
+  });
+
+  it("should get the accountType property", () => {
+    const user = UserFactory.create();
+    expect(user.accountType).toBe("main");
+  });
+
+  it("should be able to update the accountType property", () => {
+    const user = UserFactory.create();
+    const updatedAccountType = "sub";
+    user.accountType = updatedAccountType;
   });
 });
