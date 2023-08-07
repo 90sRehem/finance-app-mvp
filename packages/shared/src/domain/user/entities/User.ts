@@ -65,7 +65,7 @@ export class User extends BaseEntity<UserProps> {
     return this._props.mainAccountId ?? null;
   }
 
-  public set mainAccountId(value: Guid | null) {
+  private set mainAccountId(value: Guid | null) {
     this._props.mainAccountId = value;
   }
 
