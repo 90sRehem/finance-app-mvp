@@ -59,6 +59,16 @@ describe("User tests", () => {
     expect(user.email.address).toBe(email.address);
   });
 
+  it("should be able to update the email property", () => {
+    const user = UserFactory.create();
+    const updatedEmail = new Email({
+      address: "john.doe@example.com",
+    });
+    user.email = updatedEmail;
+
+    expect(user.email.address).toBe(updatedEmail.address);
+  });
+
   it("should get the password property", () => {
     const password = new Password({
       value: "123456",
