@@ -1,23 +1,26 @@
 import { BaseEntity } from "@/domain/core/entities/BaseEntity";
 import { Guid } from "@/domain/core/value-objects/Guid";
+import { SubAccount } from "@/domain/user/entities/SubAccount";
+import { User } from "@/domain/user/entities/User";
 import { Email } from "@/domain/user/valueObjects/Email";
 import { Name } from "@/domain/user/valueObjects/Name";
 import { Password } from "@/domain/user/valueObjects/Password";
 
 export type MainAccountProps = {
   name: Name;
-  email: Email;
-  password: Password;
-  userId: Guid;
+  user: User;
+  subAccounts: SubAccount[];
 };
 
 export class MainAccount extends BaseEntity<MainAccountProps> {
   constructor(props: MainAccountProps, id?: Guid) {
     super(props, id);
     this.addNotifications([
-      ...this._props.email.notifications,
-      ...this._props.password.notifications,
+      ...this._props.user.notifications,
       ...this._props.name.notifications,
+      ...this._props.subAccounts.flatMap(
+        (subAccount) => subAccount.notifications,
+      ),
     ]);
   }
 
@@ -32,14 +35,22 @@ export class MainAccount extends BaseEntity<MainAccountProps> {
   }
 
   public get email(): Email {
-    return this._props.email;
+    return this._props.user.email;
   }
 
   public get password(): Password {
-    return this._props.password;
+    return this._props.user.password;
   }
 
   public get userId(): Guid {
-    return this._props.userId;
+    return this._props.user.id;
+  }
+
+  public get subAccounts(): SubAccount[] {
+    return this._props.subAccounts;
+  }
+
+  public set subAccount(subAccount: SubAccount) {
+    this._props.subAccounts.push(subAccount);
   }
 }
