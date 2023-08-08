@@ -12,8 +12,16 @@ export class Name extends ValueObject<NameProps> {
 
     this.addNotification(
       new Contract()
-        .isNotNull(props.firstName, "Name", "Name must not be null")
-        .isNotNull(props.lastName, "Name", "Name must not be null"),
+        .isNotNullOrEmptyString(
+          props.firstName,
+          "Name",
+          "Name must not be empty",
+        )
+        .isNotNullOrEmptyString(
+          props.lastName,
+          "Name",
+          "Name must not be empty",
+        ),
     );
   }
   /**

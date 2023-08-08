@@ -22,8 +22,8 @@ export class MainAccountFactory {
           value: faker.internet.password(),
         }),
         name: new Name({
-          firstName: faker.name.firstName(),
-          lastName: faker.name.lastName(),
+          firstName: faker.person.firstName(),
+          lastName: faker.person.lastName(),
         }),
         userId: propsToOverride.userId || Guid.create(),
         ...propsToOverride,
