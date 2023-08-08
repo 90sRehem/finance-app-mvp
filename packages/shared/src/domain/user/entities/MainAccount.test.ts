@@ -1,8 +1,7 @@
 import { MainAccount } from "@/domain/user/entities/MainAccount";
-import { Email } from "@/domain/user/valueObjects/Email";
 import { Name } from "@/domain/user/valueObjects/Name";
-import { Password } from "@/domain/user/valueObjects/Password";
 import { MainAccountFactory } from "@/tests/factories/mainAccountFactory";
+import { UserFactory } from "@/tests/factories/userFactory";
 
 describe("MainAccount tests", () => {
   it("should create a MainAccount", () => {
@@ -14,8 +13,7 @@ describe("MainAccount tests", () => {
 
   it("should not be able to create a MainAccount with invalid data", () => {
     const invalidMainAccount = MainAccountFactory.create({
-      email: new Email({ address: "" }),
-      password: new Password({ value: "" }),
+      user: UserFactory.create(),
       name: new Name({ firstName: "", lastName: "" }),
     });
     expect(invalidMainAccount.isInvalid()).toBe(true);
