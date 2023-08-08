@@ -6,7 +6,7 @@ import { Email } from "@/domain/user/valueObjects/Email";
 import { Name } from "@/domain/user/valueObjects/Name";
 import { Password } from "@/domain/user/valueObjects/Password";
 
-type SubAccountProps = {
+export type SubAccountProps = {
   user: User;
   mainAccount: MainAccount;
   name: Name;
@@ -40,5 +40,13 @@ export class SubAccount extends BaseEntity<SubAccountProps> {
 
   public get password(): Password {
     return this._props.user.password;
+  }
+
+  public updatePassword(value: string): void {
+    this._props.user.password = new Password({ value });
+  }
+
+  public updateEmail(address: string): void {
+    this._props.user.email = new Email({ address });
   }
 }
